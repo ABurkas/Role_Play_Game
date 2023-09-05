@@ -389,5 +389,6 @@ int main(void)
 			break;
 		} 
 	}
+	printf("Hello!");
 	return 0;
 }
