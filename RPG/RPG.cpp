@@ -258,16 +258,18 @@ gracz Przeciwnik;
 
 float walka(float zdrowieP, float zdrowieG)
 {
-	while (zdrowieP > 0 && zdrowieG > 0)
+	Bohater.zdrowie = 10.0;
+	while (zdrowieP > 0 || zdrowieG > 0)
 	{
 		float wartosc_atakuG = Bohater.atak * rand() % 1 + 0.5;
 		zdrowieP = zdrowieP - wartosc_atakuG;
 		float wartosc_atakuP = Przeciwnik.atak * rand() % 1 + 0.5;
 		zdrowieG = zdrowieG - wartosc_atakuP;
 	}
-	if (zdrowieP <= 0)
+	if (zdrowieP == 0)
 	{
-		printf("Pokonales wroga\n");
+		printf("Pokonales wroga!\n");
+		printf("Twoje zdrowie: %.2lf", Bohater.zdrowie);
 	}
 	else
 	{
@@ -276,6 +278,12 @@ float walka(float zdrowieP, float zdrowieG)
 
 	return zdrowieG;
 }
+
+/*void wyczyscKonsole(void)
+{
+
+}
+*/
 
 int main(void)
 {
@@ -320,9 +328,8 @@ int main(void)
 					dodajPrzedmiotDoEkwipunku(ekwipunek, pancerz);
 				else if (mapa[GraczY - 1][GraczX] == '$')
 				{
-					int zdrowieP = 10;
+					int zdrowieP = 2;
 					walka(zdrowieP, Bohater.zdrowie);
-					printf("Pokonales wroga!\n");
 					fflush(stdout);
 				}
 				mapa[GraczY][GraczX] = '.';
@@ -337,9 +344,8 @@ int main(void)
 					dodajPrzedmiotDoEkwipunku(ekwipunek, helm);
 				else if (mapa[GraczY + 1][GraczX] == '$')
 				{
-					int zdrowieP = 10;
+					int zdrowieP = 2;
 					walka(zdrowieP, Bohater.zdrowie);
-					printf("Pokonales wroga!\n");
 					fflush(stdout);
 				}
 				mapa[GraczY][GraczX] = '.';
@@ -354,9 +360,8 @@ int main(void)
 					dodajPrzedmiotDoEkwipunku(ekwipunek, miecz);
 				else if (mapa[GraczY][GraczX - 1] == '$')
 				{
-					int zdrowieP = 10;
+					int zdrowieP = 2;
 					walka(zdrowieP, Bohater.zdrowie);
-					printf("Pokonales wroga!\n");
 					fflush(stdout);
 				}
 				mapa[GraczY][GraczX] = '.';
@@ -371,9 +376,8 @@ int main(void)
 					dodajPrzedmiotDoEkwipunku(ekwipunek, buty);
 				else if (mapa[GraczY][GraczX + 1] == '$')
 				{
-					int zdrowieP = 10;
+					int zdrowieP = 2;
 					walka(zdrowieP, Bohater.zdrowie);
-					printf("Pokonales wroga!\n");
 					fflush(stdout);
 				}
 				mapa[GraczY][GraczX] = '.';

@@ -1,6 +1,6 @@
 struct gracz
 {
-	int zdrowie;
+	float zdrowie;
 	int lvl;
 	int atak;
 };
